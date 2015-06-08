@@ -1,0 +1,33 @@
+.*{
+	margin: 0px;
+	padding: 0px;
+}
+.left{
+	width: 400px;
+	min-height:400px;
+	float: left;
+	background: #c0c0c0;
+}
+.list{
+	min-height: 400px;
+}
+body{
+	width: 1300px;
+}
+.right{
+	float:right;
+	width: 800px;
+	height: 400px;
+	background: #89d99e;
+}
+.item{
+	height: 200px;
+}
+.item_img_size{
+	max-width: 80px;
+	max-height: 100px;
+}
+.detail_img_size{
+	max-width: 160px;
+	max-height: 200px;
+}

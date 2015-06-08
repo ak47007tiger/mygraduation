@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>HUAWEI手机搜索</title>
+<script type="text/javascript" src="jslib/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<link href="index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div>华为手机搜索引擎v0.1</div>
+	<div>数据来源：新浪手机华为品牌机，可以拓展到其他数据渠道</div>
+	<div>数据准备：heritrix + lucene + jsoup，下载网页</div>
+	<div>web端： html + servlet + lucene，界面、请求处理、搜索</div>
+	<br />
+	<div>下载前将清空之前的网页</div>
+	<a href="LuceneServlet?want=download" target="blank">下载网页</a>
+	<div>提取网页中主面板信息</div>
+	<a href="LuceneServlet?want=translate" target="blank">提取网页信息</a>
+	<div>构建前将清空之前的索引</div>
+	<a href="LuceneServlet?want=buildindex" target="blank">建立索引</a>
+	<div>-1:没开始，0：运行中，1：运行结束</div>
+	<a href="LuceneServlet?want=statue" target="blank">获取任务状态</a>
+	<form>
+		<input id="keyword" type="text" /> <input type="button" value="搜索"
+			onclick="onSearchBtnClick()" />
+	</form>
+	<div>
+		<div class="left">
+			<div class="list"></div>
+			<div class="pagesControl">
+				<a href="javascript:void(0)" onclick="onPrePageClick()">上一页</a>当前页:<font
+					id="curPage"></font> 共有<font id="pageCount"></font>页<a
+					href="javascript:void(0)" onclick="onNextPageClick()">下一页</a>
+			</div>
+		</div>
+		<div class="right">
+			<img style="float: left;" id="detail_img" class="detail_img_size" alt="not found" src="" />
+			<table style="float: left;" class="detail" border="1">
+				<tr>
+					<td>ID:</td>
+					<td id="detail_id"></td>
+				</tr>
+				<tr>
+					<td>名称:</td>
+					<td id="detail_name"></td>
+				</tr>
+				<tr>
+					<td>报价:</td>
+					<td id="detail_price"></td>
+				</tr>
+				<tr>
+					<td>上市时间:</td>
+					<td id="detail_time"></td>
+				</tr>
+				<tr>
+					<td>原链接:</td>
+					<td><a  id="detail_url" href="">转到</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="item_clone" class="item" style="visibility: hidden;"
+		onclick="onItemClick(this)">
+		<font id="productId" style="visibility: hidden;"></font>
+		<img style="float: left;" id="item_img" class="item_img_size" alt="not found" src="" />
+		<table class="item_table" border="1" style="float: left;">
+			<tr>
+				<td>名称:</td>
+				<td id="item_name"></td>
+			</tr>
+			<tr>
+				<td>报价:</td>
+				<td id="item_price"></td>
+			</tr>
+			<tr>
+				<td>上市时间:</td>
+				<td id="item_time"></td>
+			</tr>
+			<tr>
+				<td>原链接:</td>
+				<td><a id="item_url" href="">转到</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
