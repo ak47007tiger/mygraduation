@@ -3,18 +3,21 @@
 	padding: 0px;
 }
 .left{
-	width: 400px;
+	width: 1400px;
 	min-height:400px;
 	float: left;
 	background: #c0c0c0;
 }
 .list{
-	min-height: 400px;
+	overflow:hidden;
+	height:auto;
+	min-height: 500px;
 }
 body{
 	width: 1300px;
 }
 .right{
+	visibility:hidden;
 	float:right;
 	width: 800px;
 	height: 400px;
