@@ -1,6 +1,7 @@
 package loc.luceneuse;
 
 import loc.model.HuaWeiPhone;
+import net.paoding.analysis.analyzer.PaodingAnalyzer;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -31,7 +32,7 @@ public class LuceneSearcher {
 		reader = IndexReader.open(directory);
 		searcher = new IndexSearcher(reader);
 		parser = new QueryParser(Version.LUCENE_35, "content",
-				new StandardAnalyzer(Version.LUCENE_35));
+				new PaodingAnalyzer());
 	}
 
 	public QueryParser getDefaultParser() {

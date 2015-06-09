@@ -1,7 +1,10 @@
 package loc.luceneuse;
 
 import loc.model.HuaWeiPhone;
+import net.paoding.analysis.analyzer.PaodingAnalyzer;
+import net.paoding.analysis.knife.Paoding;
 
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
@@ -21,8 +24,17 @@ public class LuceneIndexer {
 
 	public void init(File indexDirPath) throws IOException {
 		Directory indexDir = FSDirectory.open(indexDirPath);
+		/*
+		 * 使用庖丁分词需要配置环境变量或者在源码中更改配置文件
+		 * 使用jar包方便，体积小，于是配置env
+		 * PAODING_DIC_HOME
+		 * 前面的目录\src\dic
+		 */
+		Analyzer analyzer = new PaodingAnalyzer();
+		
+//		analyzer = new StandardAnalyzer(Version.LUCENE_35); 
 		IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_35,
-				new StandardAnalyzer(Version.LUCENE_35));
+				analyzer);
 		writer = new IndexWriter(indexDir, iwc);
 	}
 
